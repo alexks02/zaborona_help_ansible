@@ -1,0 +1,30 @@
+# OpenVPN config
+
+mode server
+proto {{openvpn_proto}}
+
+dev-type tun
+dev {{openvpn_id}}
+
+topology subnet
+server {{openvpn_server}}
+server-ipv6 {{openvpn_server_ipv6}}
+
+txqueuelen 250
+keepalive 300 900
+persist-tun
+persist-key
+
+cipher AES-128-CBC
+ncp-ciphers AES-128-GCM
+
+duplicate-cn
+
+log logs/{{openvpn_id}}.log
+status logs/{{openvpn_id}}.log 30
+client-config-dir ccd-{{openvpn_id}}
+
+ca ca.crt
+cert zaborona.help.crt
+key zaborona.help.key
+dh dh2048.pem

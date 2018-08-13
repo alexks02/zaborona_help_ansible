@@ -1,0 +1,4 @@
+openvpn_id: zaborona2
+openvpn_server: 192.168.228.0 255.255.252.0
+openvpn_server_ipv6: 2a00:1838:32:280::/112
+openvpn_port: 1195
