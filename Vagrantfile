@@ -20,7 +20,7 @@ end
 
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/xenial64"
   config.ssh.insert_key = false
 
   config.hostmanager.enabled = true
@@ -48,13 +48,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     privileged: true,
     run: 'once',
     inline: <<-SHELL
-      apt-get update && apt-get -y dist-upgrade && apt-get -y install python openvpn
+      apt-get update && apt-get -y dist-upgrade && apt-get -y install python
     SHELL
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.inventory_path = "provisioning/inventory"
     ansible.become = true
+    #ansible.raw_arguments = ["-vvv"]
   end
 
 end

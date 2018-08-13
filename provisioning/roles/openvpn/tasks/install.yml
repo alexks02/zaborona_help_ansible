@@ -1,0 +1,21 @@
+---
+
+- name: Add OpenVPN repo GPG key
+  apt_key:
+    id: E158C569
+    url: https://swupdate.openvpn.net/repos/repo-public.gpg
+
+- name: Add OpenVPN repo sources
+  apt_repository:
+    filename: openvpn
+    repo: deb http://build.openvpn.net/debian/openvpn/stable xenial main
+
+- name: Install requirements
+  apt:
+    name: "{{item}}"
+    force: yes
+  with_items:
+   - openvpn
+   - udev
+   - openssl
+   - zip

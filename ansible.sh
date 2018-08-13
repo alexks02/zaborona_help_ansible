@@ -1,3 +1,4 @@
 #!/bin/sh
 
-ansible-playbook -i provisioning/inventory -c local provisioning/playbook.yml
+. provisioning/venv/bin/activate
+ansible-playbook -vvv -i provisioning/inventory provisioning/playbook.yml

@@ -1,16 +1,8 @@
 ---
-# Ansible playbook for a GitLab server.
-#
-# @todo - Install postfix `yum -y install postfix`.
-#
-# @author Jeff Geerling (2014).
-
-- hosts: zaborona
+- name: Deploy Zaborona server
   gather_facts: yes
+  hosts: zaborona
+  remote_user: vagrant
   become: yes
-
-  vars_files:
-    - vars/openvpn.yml
-
   roles:
-    - openvpn
+  - openvpn

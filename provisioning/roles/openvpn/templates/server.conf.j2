@@ -3,12 +3,13 @@
 mode server
 proto {{openvpn_proto}}
 
-dev-type tun
+dev-type {{openvpn_type}}
 dev {{openvpn_id}}
 
 topology subnet
 server {{openvpn_server}}
 server-ipv6 {{openvpn_server_ipv6}}
+port {{openvpn_port}}
 
 txqueuelen 250
 keepalive 300 900
@@ -24,7 +25,7 @@ log logs/{{openvpn_id}}.log
 status logs/{{openvpn_id}}.log 30
 client-config-dir ccd-{{openvpn_id}}
 
-ca ca.crt
-cert zaborona.help.crt
-key zaborona.help.key
-dh dh2048.pem
+ca keys/ca.crt
+cert keys/zaborona.help.crt
+key keys/zaborona.help.key
+dh keys/dh2048.pem

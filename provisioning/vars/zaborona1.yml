@@ -1,4 +1,8 @@
+---
+
 openvpn_id: zaborona1
 openvpn_server: 192.168.224.0 255.255.252.0
 openvpn_server_ipv6: 2a00:1838:32:200::/112
 openvpn_port: 1194
+openvpn_proto: tcp
+openvpn_type: tun

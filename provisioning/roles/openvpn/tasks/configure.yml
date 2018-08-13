@@ -1,0 +1,35 @@
+---
+
+- name: Create openvpn directories
+  file:
+    path: "{{item}}"
+    mode: 0755
+    state: directory
+  with_items:
+    - "{{openvpn_etcdir}}"
+    - "{{openvpn_etcdir}}/logs"
+
+- name: Create keys directory
+  file:
+    path: "{{openvpn_keydir}}"
+    mode: 0755
+    state: directory
+
+- name: Copy keys
+  copy:
+    src: "{{ role_path }}/files/{{item}}"
+    dest: "{{openvpn_keydir}}"
+    #state: hard
+  with_items:
+   - ca.crt
+   - zaborona.help.crt
+   - zaborona.help.key
+   - dh2048.pem
+
+- name: Set ip forwarding in the sysctl file and reload if necessary
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    sysctl_set: yes
+    state: present
+    reload: yes

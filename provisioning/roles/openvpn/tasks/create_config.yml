@@ -1,0 +1,14 @@
+---
+
+- name: Create client configuration directory if requested
+  file:
+    path: "{{openvpn_etcdir}}/ccd-{{openvpn_id}}"
+    mode: 755
+    state: directory
+
+- name: Configure server
+  template:
+    src: server.conf.j2
+    dest: "{{openvpn_etcdir}}/{{openvpn_id}}.conf"
+  notify:
+   - openvpn restart
