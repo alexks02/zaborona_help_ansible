@@ -1,0 +1,13 @@
+---
+
+- name: Install dnsmasq
+  apt:
+    name: dnsmasq
+    force: yes
+
+- name: Copy dnsmasq config
+  copy:
+    src: "{{ role_path }}/files/zaborona"
+    dest: "/etc/dnsmasq.d"
+  notify:
+   - restart dnsmasq

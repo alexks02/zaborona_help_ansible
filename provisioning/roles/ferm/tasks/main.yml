@@ -1,0 +1,13 @@
+---
+
+- name: Install ferm
+  apt:
+    name: ferm
+    force: yes
+
+- name: Copy ferm config
+  copy:
+    src: "{{ role_path }}/files/ferm.conf"
+    dest: "/etc/ferm"
+  notify:
+   - restart ferm
