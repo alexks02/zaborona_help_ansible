@@ -6,7 +6,7 @@ require 'yaml'
 VAGRANTFILE_API_VERSION = "2"
 
 current_dir  = File.dirname(File.expand_path(__FILE__))
-config       = YAML.load_file("#{current_dir}/vagrant.yaml")
+config       = YAML.load_file("#{current_dir}/vagrantconfig.yaml")
 vars         = config['vars']
 plugins      = config['plugins']
 need_restart = false

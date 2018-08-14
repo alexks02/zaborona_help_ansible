@@ -2,4 +2,4 @@
   authorized_key:
     user: vagrant
     state: present
-    key: "{{ lookup('file', '/home/xander/.ssh/id_rsa.pub') }}"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
